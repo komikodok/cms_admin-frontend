@@ -1,10 +1,13 @@
 import SideBar from "./components/SideBar"
+import Container from "./components/Container"
+import Body from "./components/Body"
 
 function App() {
   return (
-    <body className="h-screen overflow-hidden md:flex">
-      <SideBar/>
-    </body>
+      <Container>
+        <SideBar/>
+        <Body/>
+      </Container>
   )
 }
 
