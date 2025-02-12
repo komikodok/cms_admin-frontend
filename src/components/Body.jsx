@@ -1,9 +1,9 @@
-import Header from "./Header"
-
 const Body = () => {
     return (
         <>
-            <Header/>
+            <div className="w-full h-full">
+                <h2>Body</h2>
+            </div>
         </>
     )
 }
