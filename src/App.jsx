@@ -6,6 +6,7 @@ import LaporanKeuangan from "./components/pages/keuangan/LaporanKeuangan"
 import Pembayaran from "./components/pages/keuangan/Pembayaran"
 import Ruangan from "./components/pages/manajemen_kos/Ruangan"
 import StatusKetersediaan from "./components/pages/manajemen_kos/StatusKetersediaan"
+import SideBar from "./components/sidebar/SideBar"
 import { useState } from "react"
 
 const pages  = {
@@ -16,11 +17,15 @@ const pages  = {
   Ruangan: <Ruangan/>,
   StatusKetersediaan: <StatusKetersediaan/>
 }
+
 function App() {
   const [currentPage, setCurrentPage] = useState("DaftarPenyewa")
   return (
       <Container>
-        <Body currentPage={pages[currentPage]} setCurrentPage={setCurrentPage}/>
+        <SideBar currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+        <Body setCurrentPage={setCurrentPage}>
+          {pages[currentPage]}
+        </Body>
       </Container>
   )
 }

@@ -1,20 +1,12 @@
-/* eslint-disable react/prop-types */
-import { useState } from "react"
-import SideBar from "../sidebar/SideBar";
+const Header = () => {
+  return (
+    <header className="bg-gradient-to-r from-cyan-900 to-cyan-700 shadow-lg h-16 flex items-center px-6 w-full">
+      {/* Judul Halaman */}
+      <h1 className="ml-4 text-white text-2xl font-bold tracking-wide uppercase">
+        Halaman Tagihan & Pembayaran
+      </h1>
+    </header>
+  );
+};
 
-const Header = ({setCurrentPage}) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-        <>
-            <SideBar isOpen={isOpen} setIsOpen={setIsOpen} setCurrentPage={setCurrentPage}/>
-            <div className="bg-cyan-950 w-full h-14 flex">
-                <button onClick={() => setIsOpen(!isOpen)} className="ml-auto mr-4 cursor-pointer">
-                    <span className="font-bold text-cyan-100">Menu</span>
-                </button>
-            </div>
-        </>
-    )
-}
-
-export default Header
+export default Header;
