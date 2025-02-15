@@ -19,7 +19,7 @@ const pages  = {
 }
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("DaftarPenyewa")
+  const [currentPage, setCurrentPage] = useState("Ruangan")
   return (
       <Container>
         <SideBar currentPage={currentPage} setCurrentPage={setCurrentPage}/>
