@@ -4,7 +4,7 @@ import Menu from "./Menu"
 import TombolSideBar from "./TombolSideBar"
 
 const SideBar = ({currentPage, setCurrentPage}) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   
   return (
     <>
