@@ -1,10 +1,7 @@
 /* eslint-disable react/prop-types */
-import Header from "./Header"
-
-const Body = ({children, setCurrentPage}) => {
+const Body = ({children}) => {
     return (
         <>
-            <Header setCurrentPage={setCurrentPage}/>
             {children}
         </>
     )

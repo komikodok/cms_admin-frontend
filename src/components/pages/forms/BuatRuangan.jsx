@@ -37,21 +37,21 @@ const BuatRuangan = ({openForm, setOpenForm}) => {
             }
         }
 
-        try {
-            const response = await axios.post(
-                "http://localhost:8000/api/rooms",
-                formDataToSend,
-                {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').content,
-                    },
-                }
-            );
-            console.log("Data: ", response.data);
-        } catch (error) {
-            console.log("Error: ", error);
-        }
+        await axios.get("http://localhost:8000/sanctum/csrf-cookie", { withCredentials: true })
+            .then(() => {
+                axios.post("http://localhost:8000/api/rooms", formDataToSend, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "X-CSRF-TOKEN": document.cookie
+                    .split("; ")
+                    .find(row => row.startsWith("XSRF-TOKEN="))
+                    ?.split("=")[1],
+                },
+                withCredentials: true,
+                })
+                .then(response => console.log(response.data))
+                .catch(error => console.error(error));
+            });
     };
 
     return (
@@ -92,7 +92,7 @@ const BuatRuangan = ({openForm, setOpenForm}) => {
                         name="room_number"
                         value={formData.room_number}
                         placeholder="Nomor ruangan" 
-                        className="outline-none rounded-lg h-12 p-2 font-semibold text-gray-500 border border-teal-900 focus:border-2 focus:border-cyan-900" 
+                        className="outline-none rounded-lg h-12 p-2 font-semibold placeholder-gray-500 text-gray-900 border border-teal-900 focus:border-2 focus:border-cyan-900" 
                         onChange={handleChange}/>
 
                     <select 
@@ -111,7 +111,7 @@ const BuatRuangan = ({openForm, setOpenForm}) => {
                         name="price"
                         value={formData.price}
                         placeholder="Harga"
-                        className="rounded-lg h-12 outline-none p-2 font-semibold text-gray-500 border border-teal-900 focus:border-2 focus:border-cyan-900" 
+                        className="rounded-lg h-12 outline-none p-2 font-semibold placeholder-gray-500 text-gray-900 border border-teal-900 focus:border-2 focus:border-cyan-900" 
                         onChange={handleChange}/>
 
                     <label 
