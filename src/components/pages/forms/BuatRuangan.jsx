@@ -9,6 +9,7 @@ const BuatRuangan = ({openForm, setOpenForm}) => {
         price: "",
         images: []
     })
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const handleChange = async (e) => {
         if (e.target.type === "file") {
@@ -49,8 +50,8 @@ const BuatRuangan = ({openForm, setOpenForm}) => {
                 },
                 withCredentials: true,
                 })
-                .then(response => console.log(response.data))
-                .catch(error => console.error(error));
+                .then(() => setIsSuccess(true))
+                .catch(() => setIsSuccess(false));
             });
     };
 
@@ -80,6 +81,10 @@ const BuatRuangan = ({openForm, setOpenForm}) => {
                 <div className="w-full flex justify-start items-center mb-12 h-12">
                     <strong className="text-3xl text-cyan-950 border-b-2 border-cyan-950">Buat Data Ruangan Baru</strong>
                 </div>
+                
+                {isSuccess && (
+                    <p className="text-lg my-4 font-semibold text-teal-700">Berhasil membuat data ruangan baru</p>
+                )}
                 
                 <form 
                     action=""
