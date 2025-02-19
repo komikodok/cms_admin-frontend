@@ -19,7 +19,7 @@ const pages  = {
 }
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("Ruangan");
+  const [currentPage, setCurrentPage] = useState("StatusKetersediaan");
   return (
       <Container>
         <SideBar currentPage={currentPage} setCurrentPage={setCurrentPage}/>

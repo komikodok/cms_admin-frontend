@@ -63,7 +63,7 @@ const StatusKetersediaan = () => {
 
             <BuatRuangan openForm={openForm} setOpenForm={setOpenForm} />
 
-            {openData && <DataRuangan />}
+            <DataRuangan openData={openData}/>
 
         </>
     );
