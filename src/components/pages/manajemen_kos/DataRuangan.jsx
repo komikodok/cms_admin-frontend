@@ -3,15 +3,13 @@ import "../../../../datatable.css"
 
 const DataRuangan = ({openData}) => {
     useEffect(() => {
+        if (!openData) return;
         let table = $("#table").DataTable();
         if (table) {
             table.destroy();
         }
 
         $("#table").DataTable({
-            dom:  "<'flex justify-between items-center pb-4'<'dataTables_filter'f><'dataTables_paginate'p>>" +
-                "<'table-container'tr>" +
-                "<'footer flex justify-between items-center pt-4'<'dataTables_info'i><'dataTables_length'l>>",
             ajax: {
                 url: "http://localhost:8000/api/rooms",
                 type: "GET",
@@ -24,8 +22,8 @@ const DataRuangan = ({openData}) => {
                     orderable: false,
                     render: (data) => {
                         return data === "available" 
-                            ? "<span class='text-green-600 font-bold'>Tersedia</span>"
-                            : "<span class='text-red-600 font-bold'>Penuh</span>";
+                        ? "<span class='text-green-600 font-bold'>Tersedia</span>"
+                        : "<span class='text-red-600 font-bold'>Penuh</span>";
                     }
                 },
                 { 
@@ -37,7 +35,7 @@ const DataRuangan = ({openData}) => {
                     data: null,
                     orderable: false,
                     render: () => {
-                        return `<button class="bg-blue-500 text-white px-4 py-2 rounded">Detail</button>`;
+                        return `<button class="bg-blue-500 text-white m-2 px-4 py-2 rounded">Detail</button>`;
                     }
                 },
             ],
@@ -49,13 +47,19 @@ const DataRuangan = ({openData}) => {
                     $(row).addClass('bg-cyan-100');
                 }
             },
+            dom:  "<'flex justify-end'<'dataTables_filter'f>>" +
+                "<'table-container'tr>" +
+                "<'flex'<'dataTables_info'i><'dataTables_paginate'p><'dataTables_length'l>>",
             drawCallback: function() {
                 setTimeout(() => {
                     $("#table thead").addClass("bg-cyan-300 h-10");
                     $("#table thead th").addClass("text-blue-950 font-bold");
                     $("#table tbody td").addClass("text-blue-500 font-semibold");
 
-                    $(".dataTables_filter label").addClass("bg-cyan-300");
+                    $(".dataTables_paginate nav ul").addClass("flex gap-4")
+                    $(".dataTables_filter").addClass("m-2")
+                    $(".dataTables_filter label").addClass("text-blue-950 !font-bold").text("Cari: ");
+                    $(".dataTables_filter input").addClass("outline-none border border-cyan-300 focus:border-2 focus:border-cyan-500 rounded-lg")
                 }, 300);
             }
         });
@@ -63,7 +67,7 @@ const DataRuangan = ({openData}) => {
         return () => {
             $("#table").DataTable().destroy();
         };
-    }, []);
+    }, [openData]);
 
     return (
         <div className={`mt-6 px-2 md:px-14 lg:px-20 bg-white shadow-lg rounded-lg ${openData ? "scale-100 translate-y-0" : "scale-0 translate-y-full"} transition-transform duration-900`}>
