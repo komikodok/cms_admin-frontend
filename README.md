@@ -24,6 +24,7 @@ The Boarding House Admin System is a CMS-based application designed to help boar
 - Technologies Used
 
 - Backend: Laravel 11
+  detail : https://github.com/komikodok/cms_admin-restapi
 
 - Frontend: React.js
 
