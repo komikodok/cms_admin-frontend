@@ -45,4 +45,4 @@ Install dependencies
 ![App Screenshot](./public/CMS.png)
 
 SideBar
-![App Screenshot](./public/CMS 2.png)
+![App Screenshot](./public/CMS2.png)
