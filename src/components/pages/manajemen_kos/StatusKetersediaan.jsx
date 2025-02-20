@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import BuatRuangan from "../forms/BuatRuangan";
 import DataRuangan from "./DataRuangan";
-import axios from "axios";
 
 const StatusKetersediaan = () => {
     const [openForm, setOpenForm] = useState(false);

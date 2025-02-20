@@ -39,7 +39,7 @@ const DataRuangan = ({openData}) => {
                     }
                 },
             ],
-            pageLength: 4,
+            pageLength: 5,
             rowCallback: function(row, data, index) {
                 if (index % 2 === 0) {
                     $(row).addClass('bg-white');
@@ -47,19 +47,35 @@ const DataRuangan = ({openData}) => {
                     $(row).addClass('bg-cyan-100');
                 }
             },
+            language: {
+                search: "Cari: ",
+                lengthMenu: "Tampilkan _MENU_ data per halaman",
+                info: "Menampilkan _START_ - _END_ dari _TOTAL_ data",
+                infoEmpty: "Tidak ada data yang tersedia",
+                zeroRecords: "Data tidak ditemukan",
+                paginate: {
+                    first: "«",
+                    previous: "<",
+                    next: ">",
+                    last: "»",
+                    0: "Halaman _PAGE_"
+                },
+            },
             dom:  "<'flex justify-end'<'dataTables_filter'f>>" +
                 "<'table-container'tr>" +
-                "<'flex'<'dataTables_info'i><'dataTables_paginate'p><'dataTables_length'l>>",
+                "<'flex justify-between text-blue-950 !font-bold mt-4'<'dataTables_info'i><'dataTables_paginate'p><'dataTables_length'l>>",
             drawCallback: function() {
                 setTimeout(() => {
+                    console.log($(".dataTables_paginate nav ul").html());
                     $("#table thead").addClass("bg-cyan-300 h-10");
                     $("#table thead th").addClass("text-blue-950 font-bold");
                     $("#table tbody td").addClass("text-blue-500 font-semibold");
 
-                    $(".dataTables_paginate nav ul").addClass("flex gap-4")
+                    $(".dataTables_paginate nav ul").addClass("flex gap-4 text-blue-950 !font-bold")
                     $(".dataTables_filter").addClass("m-2")
-                    $(".dataTables_filter label").addClass("text-blue-950 !font-bold").text("Cari: ");
                     $(".dataTables_filter input").addClass("outline-none border border-cyan-300 focus:border-2 focus:border-cyan-500 rounded-lg")
+                    $(".dataTables_length label").addClass("text-blue-950 !font-bold");
+                    $(".dataTables_length label select").addClass("outline-none rounded-lg border border-cyan-300 focus:border-2 focus:border-cyan-500");
                 }, 300);
             }
         });
