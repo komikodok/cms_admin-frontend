@@ -1,3 +1,8 @@
+# Screenshot
+![App Screenshot](./public/CMS.png)
+
+## SideBar
+![App Screenshot](./public/CMS2.png)
 
 # Description
 
@@ -40,9 +45,3 @@ Install dependencies
 ```bash
   npm install
 ```
-
-
-![App Screenshot](./public/CMS.png)
-
-SideBar
-![App Screenshot](./public/CMS2.png)
